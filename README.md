@@ -1,1 +1,1 @@
-# EnvironmentAutomation Workshop
+# Environment Automation Workshop
