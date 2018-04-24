@@ -26,22 +26,6 @@ module "app-config" {
 }
 
 
-output "JCS Instance" {
-  value = "${module.get-paas-info.jcs_instance}"
-}
-
-output "JCS Public IP" {
-  value = "${module.get-paas-info.jcs_public_ip}"
-}
-
-output "SOA Instance" {
-  value = "${module.get-paas-info.soa_instance}"
-}
-
-output "SOA Public IP" {
-  value = "${module.get-paas-info.soa_public_ip}"
-}
-
 
 output "LibertyInsurance App Url" {
   value = "http://${module.compute.public-ip}:7001/LibertyInsurance-WebServiceApp-context-root/"
