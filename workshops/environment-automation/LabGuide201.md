@@ -38,7 +38,11 @@ Leveraging this environment, you will configure applications to run in each of t
 
 - Go to directory lab2 using the below command
 
-  `cd lab2`
+  `cd ~/lab2`
+
+- To see the files in the directory run the below command
+
+  `ls`
 
 ### **STEP 2**: Title of Step 2
 
