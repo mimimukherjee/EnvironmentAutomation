@@ -26,15 +26,17 @@ Leveraging this environment, you will configure applications to run in each of t
 
 ## Required Artifacts
 
-- List of Prerequisites
+- No other Prerequisites are required for this lab other than the Prerequisites specified in Lab 101.
 
-# Main Heading 1
+# Environment Provisioning
 
-## Sub Heading 1
+## Using Terraform to provision the required environment
 
-### **STEP 1**: Title of Step 1
+### **STEP 1**: Login to Putty
 
-- Instructions for Step 1
+- Start a new putty or ssh session to the workshop vm as shown below.
+
+- Go to directory lab2 using the below command
 
 ### **STEP 2**: Title of Step 2
 
