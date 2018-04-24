@@ -16,12 +16,12 @@ Leveraging this environment, you will configure applications to run in each of t
 ## Objectives
 
 - The terraform module in this lab will configure the following:
-
-- * In the Liberty Insurance stack, a WebLogic JDBCS Connection Pool and Data Source is configured on the WebLogic server and the Liberty Insurance application is then deployed on the WebLogic server using the JDBC Data Source to retrieve and insert applicant information from the OCI database
-
-- * In the SOACS stack, service bus project configuration is then imported into service bus.
-
-- * In the JCS stack, the HHS application is deployed into the JCS.
+  
+  * In the Liberty Insurance stack, a WebLogic JDBCS Connection Pool and Data Source is configured on the WebLogic server and the Liberty Insurance application is then deployed on the WebLogic server using the JDBC Data Source to retrieve and insert applicant information from the OCI database
+  
+  * In the SOACS stack, service bus project configuration is then imported into service bus.
+  
+  * In the JCS stack, the HHS application is deployed into the JCS.
 
 
 ## Required Artifacts
