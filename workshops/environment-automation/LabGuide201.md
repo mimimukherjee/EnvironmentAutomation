@@ -38,6 +38,8 @@ Leveraging this environment, you will configure applications to run in each of t
 
 - Go to directory lab2 using the below command
 
+`cd lab2`
+
 ### **STEP 2**: Title of Step 2
 
 - Instructions for Step 2
