@@ -44,6 +44,10 @@ Leveraging this environment, you will configure applications to run in each of t
 
   `ls`
 
+- This should list the files you have in the directory.
+
+  ![](images/201/3.png)
+
 ### **STEP 2**: Title of Step 2
 
 - Instructions for Step 2
