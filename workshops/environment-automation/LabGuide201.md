@@ -1,9 +1,9 @@
 ![](images/201/header201.png)  
-Updated: Date
+Updated: 04/24/2018
 
 ## Introduction
 
-Introductory Text
+In this Lab, you are provided with an already provisioned environment as shown in Lab 101.
 
 **_To log issues_**, click here to go to the [github oracle](https://github.com/oracle/learning-library/issues/new) repository issue submission form.
 
