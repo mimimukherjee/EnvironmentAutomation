@@ -85,4 +85,20 @@ Leveraging this environment, you will configure applications to run in each of t
 
 - If you have typed wrong and don't want to save the file press `Esc` from keyboard and type `q!`. This will not save the file and you  can open it again using `vi` command to retype.
 
+- **IMPORTANT** - Please make sure the dbconn is in a single line with no line break or space.
+
+- Now you can run this terraform using the below command
+  
+  `. ./env-var.gse`
+  
+- To Review the terraform plan to see all the resources terraform will provision in this lab, first initialize the terraform providers and modules needed and then generate the terraform plan and review the resources that terraform will create. In this lab, terraform will create a total of 21 resources. Type the below commands to verify the plan.
+
+  `terraform init`
+  
+  `terraform plan -out plan.out`
+  
+  ![](images/201/7.png)
+ 
+
+
 
