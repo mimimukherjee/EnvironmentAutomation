@@ -35,3 +35,7 @@ Introductory Text
   ![](images/101/18.png)
   
   ![](images/101/19.png)
+  
+  ![](images/101/20.png)
+  
+  ![](images/101/21.png)
