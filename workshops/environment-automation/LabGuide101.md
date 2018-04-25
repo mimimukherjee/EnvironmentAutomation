@@ -50,11 +50,23 @@ Introductory Text
   
   ![](images/101/27.png)
   
-### **STEP 3**: Provisioning resources
+### **STEP 3**: Provisioning Resources
 
-- Now to provision the environment and all the resource, run the following command as shown in the screenshots.
+- Now to provision the environment and all the resources, run the following command as shown in the screenshots.
 
   `terraform apply "plan.out"`
+  
+  ![](images/101/28.png)
+  
+  ![](images/101/29.png)
+  
+  ![](images/101/30.png)
+  
+  ![](images/101/31.png)
+  
+  ![](images/101/32.png)
+  
+  ![](images/101/33.png)
   
   
   
