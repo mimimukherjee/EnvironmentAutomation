@@ -52,6 +52,10 @@ Leveraging this environment, you will configure applications to run in each of t
 
 - Now, You will now modify the app_config.tf.template to call module app-config and configure all 3 applications in the environment provided.
 
-- Next, Copy app_config.tf.template to app_config.tf and use the vi command the 
+- Next, Copy app_config.tf.template to app_config.tf and use the vi command to open the app_config.tf and edit.
 
   `cp app_config.tf.template app_config.tf`
+  `vi app_config.tf`
+  
+  ![](images/201/4.png)
+
