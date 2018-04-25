@@ -3,36 +3,128 @@ Updated: Date
 
 ## Introduction
 
-Introductory Text
+In this Lab, you will start provisioning a multi-tier environment.
+
+![](images/101/1.png)
 
 **_To log issues_**, click here to go to the [github oracle](https://github.com/oracle/learning-library/issues/new) repository issue submission form.
 
 ## Objectives
 
-- Objective 1
-- Objective 2
+- In this lab, you will provision an environment consists of the following 3 stacks using Terraform:
+  
+*	A custom stack for Liberty Insurance App running Docker Container on a compute instance and OCI Database System
+* A SOACS stack for service bus project with proxy and business services running on SOACS and DBCS.
+* A JCS stack for HHS application running on JCS and DBCS
+
+
 
 ## Required Artifacts
 
-- List of Prerequisites
+*	Putty or ssh client to login to workshop vm
+*	Web Browser to access cloud console
 
-# Main Heading 1
+- Instructor will provide the following to each participant.
 
-## Sub Heading 1
+*	Public ip of workshop vm along with username and ssh key to access the workshop VM
+*	Access info for OCI Cloud Account
 
-### **STEP 1**: Title of Step 1
 
-- Instructions for Step 1
+# Environment Provisioning
 
-### **STEP 2**: Title of Step 2
+## Using Terraform to provision the required environment
 
-- To Review the terraform plan to see all the resources terraform will provision in this lab, first initialize the terraform providers and modules needed and then generate the terraform plan and review the resources that terraform will create. In this lab, terraform will create a total of 21 resources. Type the below commands to verify the plan as shown in below screenshots.
+### **STEP 1**: 1)	Ssh or putty into workshop VM
 
-  `terraform init`
+- Start a new putty or ssh session to the workshop vm as shown below.
+
+* Enter public ip of the workshop vm 
+
+![](images/101/2.png)
+
+* In Connection -> SSH -> Auth, browse and select the ppk format private key
+
+![](images/101/3.png)
+
+* In Connection, check Enable TCP keepalives and set Seconds between keepalives to 5 
+
+![](images/101/4.png)
+
+* Click Open
+
+* When prompted for login as, enter username devopXX provided by instructor 
+
+![](images/101/5.png)
+
+* cd Lab1
+* cp env-var env-var.gse
+* vi env-var.gse
+
+![](images/101/6.png)
+
+![](images/101/7.png)
+
+* You will now go to next step to find the information needed to set the environment file
+
+- SSH Instructions
+
+* ssh -i <private key file>  <username>@<public ip>
+* You will now go to next step to find the information needed to set the environment file
+
+### **STEP 2**: Login into Cloud Service Dashboard
+
+- Login into Cloud Service Dashboard and OCI Console with the cloud account access provided by the instructor to note down information required to run Terraform.
+
+- Open a web browser and go to the cloud service dashboard url and login with username and password provided. Enter this password in TF_VAR_password in env-var.gse.
+
+![](images/101/8.png)
+
+- Click on the Compute link to view the service detail of OCI.  
+
+![](images/101/9.png)
+
+- Note down the Identity Service Id and Subscription ID.  Enter the Identity Service Id  in TF_VAR_domain and Subscription ID in TF_VAR_subscription_id. 
+
+![](images/101/10.png)
+
+- Click Open Service Console to Open OCI Console.
+
+![](images/101/11.png)
+
+- Click on the TENANCY link and copy the tenancy OCID and note down the Home Region.  Enter the tenancy OCID in TF_VAR_tenancy_ocid ,  the tenancy in TF_VAR_tenancy and the Home Region in TF_VAR_region.
+
+![](images/101/12.png)
   
-  `terraform plan -out plan.out`
-  
-  ![](images/101/18.png)
+- Click on User from the Identity tab  
+
+![](images/101/13.png)
+
+- Copy the OCID of user gse-admin_ww@oracle.com and enter the user ocid in TF_VAR_user_ocid.
+
+![](images/101/14.png)
+
+- Click on Compartments and copy OCID of Demo compartment and ManagedCompartmentForPaaS and enter demo OCID in TF_VAR_compartment_ocid  and ManagedCompartmentForPaaS  OCID in TF_VAR_paas_compartment_ocid. 
+
+![](images/101/15.png)
+
+- Enter the swift password provided by instructor in TF_VAR_swift_password. 
+
+- Save the env-var.gse.  Here’s an example of env-var.gse: 
+
+![](images/101/16.png)
+
+- Source the environment. 
+* $ . ./env-var.gse
+
+![](images/101/17.png)
+
+- To Review the terraform plan to see all the resources terraform will provision in this lab, first initialized the terraform providers and modules needed and then generate the terraform plan and review the resources that terraform will created.  In this lab, terraform will create a total of 21 resources.
+
+* $ terraform init
+* $ terraform plan -out plan.out
+
+![](images/101/18.png)
+
   
   ![](images/101/19.png)
   
