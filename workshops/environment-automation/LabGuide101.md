@@ -1,5 +1,4 @@
 ![](images/101/header101.png)  
-Updated: Date
 
 ## Introduction
 
