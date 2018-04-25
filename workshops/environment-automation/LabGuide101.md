@@ -33,7 +33,7 @@ In this Lab, you will start provisioning a multi-tier environment.
 
 ## Using Terraform to provision the required environment
 
-### **STEP 1**: 1)	Ssh or putty into workshop VM
+### **STEP 1**: Ssh or putty into workshop VM
 
 - Start a new putty or ssh session to the workshop vm as shown below.
 
