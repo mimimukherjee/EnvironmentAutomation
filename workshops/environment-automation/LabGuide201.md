@@ -98,7 +98,16 @@ Leveraging this environment, you will configure applications to run in each of t
   `terraform plan -out plan.out`
   
   ![](images/201/7.png)
- 
+  
+- Run the terraform apply to configure the applications on this environment.
 
+  `terraform apply "plan.out"`
+
+- This will take several minutes to run. Once complete, you will see the HHS url and the liberty insurance url as shown below.
+
+  ![](images/201/8.png)
+  ![](images/201/9.png)
+
+  
 
 
