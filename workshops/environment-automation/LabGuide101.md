@@ -90,6 +90,13 @@ Introductory Text
   
   ![](images/101/43ab.png)
   
+- Terraform is now running.  YOU HAVE SUCCESSFULLY COMPLETED LAB1.  This may take several hours to complete.  DO NOT WAIT FOR this to complete.  We will continue to Lab2. 
+
+- You can login to OCI Console to see that VCN and all the network resource and a compute instance has already been created.  Other resources such as OCI DB System, JCS and SOACS are still being provisioned.  When terraform completes, you will see the following.  Please do not wait for this to complete.
+
+  ![](images/101/99.png)
+
+  
   
   
   
