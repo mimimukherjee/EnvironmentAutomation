@@ -26,4 +26,12 @@ Introductory Text
 
 ### **STEP 2**: Title of Step 2
 
-- Instructions for Step 2
+- To Review the terraform plan to see all the resources terraform will provision in this lab, first initialize the terraform providers and modules needed and then generate the terraform plan and review the resources that terraform will create. In this lab, terraform will create a total of 21 resources. Type the below commands to verify the plan.
+
+  `terraform init`
+  
+  `terraform plan -out plan.out`
+  
+  ![](images/101/18.png)
+  
+  ![](images/101/19.png)
