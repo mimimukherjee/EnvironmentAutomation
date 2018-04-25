@@ -42,4 +42,14 @@ Introductory Text
   
   ![](images/101/23.png)
   
+  ![](images/101/24.png)
+  
+  ![](images/101/25.png)
+  
+  ![](images/101/26.png)
+  
+  ![](images/101/27.png)
+  
+  
+  
   
