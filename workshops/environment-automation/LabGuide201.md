@@ -55,6 +55,7 @@ Leveraging this environment, you will configure applications to run in each of t
 - Next, Copy app_config.tf.template to app_config.tf and use the vi command to open the app_config.tf and edit.
 
   `cp app_config.tf.template app_config.tf`
+  
   `vi app_config.tf`
   
   ![](images/201/4.png)
@@ -79,3 +80,9 @@ Leveraging this environment, you will configure applications to run in each of t
   }
 
   ![](images/201/6.png)
+  
+- To save the file, first press `Esc` from your keyboard. Now type `wq!`. This will save the file.
+
+- If you have typed wrong and don't want to save the file press `Esc` from keyboard and type `q!`. This will not save the file and you  can open it again using `vi` command to retype.
+
+
