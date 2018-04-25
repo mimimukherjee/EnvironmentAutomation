@@ -48,7 +48,7 @@ Leveraging this environment, you will configure applications to run in each of t
 
   ![](images/201/3.png)
 
-### **STEP 2**: configure the applications
+### **STEP 2**: Configure the applications
 
 - Now, You will now modify the app_config.tf.template to call module app-config and configure all 3 applications in the environment provided.
 
