@@ -84,6 +84,8 @@ Introductory Text
   
   ![](images/101/41.png)
   
+  ![](images/101/42.png)
+  
   
   
   
