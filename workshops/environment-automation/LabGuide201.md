@@ -67,27 +67,29 @@ Leveraging this environment, you will configure applications to run in each of t
 
 - Add the code section below as shown in the following screenshot.
 
-  `module "app-config" {`
+  ```
+  module "app-config" {
   
-    `  source = "../modules/app-config"`
+      source = "../modules/app-config"
     
-    `  wlst = "/app/fmw/oracle_common/common/bin/wlst.sh"`
+      wlst = "/app/fmw/oracle_common/common/bin/wlst.sh"
     
-    `  liberty_ip = "${module.compute.public-ip}"`
+      liberty_ip = "${module.compute.public-ip}"
     
-    `  osb_ip = "${trimspace(module.get-paas-info.soa_public_ip)}"`
+      osb_ip = "${trimspace(module.get-paas-info.soa_public_ip)}"
     
-    `  jcs_ip = "${trimspace(module.get-paas-info.jcs_public_ip)}"`
+      jcs_ip = "${trimspace(module.get-paas-info.jcs_public_ip)}"
     
-    `  password = "${var.DBAdminPassword}"`
+      password = "${var.DBAdminPassword}"
     
-    `  dbconn="jdbc:oracle:thin:@//${module.database.DBNodePublicIP[0]}:1521/${var.PDBName}.${module.vcn.subnet2_label}.${var.env_prefix}${var.dns_vcn}.${var.oraclevcn}"`
+      dbconn="jdbc:oracle:thin:@//${module.database.DBNodePublicIP[0]}:1521/${var.PDBName}.${module.vcn.subnet2_label}.${var.env_prefix}${var.dns_vcn}.${var.oraclevcn}"
       
-    `  targets = "${local.jcs_cluster}"`
+      targets = "${local.jcs_cluster}"
     
-    `  ssh_private_key = "${var.ssh_authorized_private_key}"`
+      ssh_private_key = "${var.ssh_authorized_private_key}"
     
-  `}`
+  }
+  ```
   
 
   ![](images/201/6.png)
