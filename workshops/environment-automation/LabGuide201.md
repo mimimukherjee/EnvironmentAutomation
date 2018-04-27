@@ -117,7 +117,6 @@ Leveraging this environment, you will configure applications to run in each of t
 - This will take several minutes to run. Once complete, you will see the HHS url and the liberty insurance url as shown below.
 
   ![](images/201/8.png)
-  ![](images/201/9.png)
   
 - Click on both the url's you see for HHS and Liberty Insurance application and you should be able to see the below screens for the applications.
 
