@@ -129,7 +129,7 @@ $ . ./env-var.gse
 
 ![](images/101/17.png)
 
-- To Review the terraform plan to see all the resources terraform will provision in this lab, first initialized the terraform providers and modules needed and then generate the terraform plan and review the resources that terraform will created.  In this lab, terraform will create a total of 21 resources.
+- Terraform can generate an execution plan that shows all the resources that Terraform will create, change or destroy when it runs without actually applying any of the changes.  This step let you review the execution plan to see all the resources terraform will provision in this lab. First run terraform init to initialize the terraform providers and modules needed and then run terraform plan to generate the terraform plan and review the resources that terraform will created.  In this lab, terraform will create a total of 21 resources.
 
 ```
 $ terraform init
