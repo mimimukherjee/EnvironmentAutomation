@@ -69,7 +69,7 @@ vi env-var.gse
 
 ![](images/101/7.png)
 
-* You will now go to next step to find the information needed to set the environment file
+* You will now go to next step to find your cloud account information needed to fill in the values for the environment variables inside the yellow rectangle sections and set this environment file
 
 
 ### Alternate Intructions to use SSH
@@ -78,7 +78,7 @@ vi env-var.gse
 ```
 ssh -i <private_key_file> <username>@<public_ip>
 ```
-* You will now go to next step to find the information needed to set the environment file
+* You will now go to next step to find your cloud account information needed to fill in the values for the environment variables inside the yellow rectangle sections and set this environment file
 
 ### **STEP 2**: Login into Cloud Service Dashboard
 
@@ -118,7 +118,7 @@ ssh -i <private_key_file> <username>@<public_ip>
 
 - Enter the swift password provided by instructor in TF_VAR_swift_password. 
 
-- Save the env-var.gse by pressing **Shift-Z-Z**.  Here’s an example of env-var.gse: 
+- Save the env-var.gse by pressing **Shift-Z-Z**.  Here’s an example of env-var.gse with the environment variable values filled in: 
 
 ![](images/101/16.png)
 
@@ -205,6 +205,7 @@ $ terraform plan -out plan.out
 
   
   
+You can also open another putty or ssh window to the workshop vm and review the terraform templates in both the lab1 and modules directory in detail.
   
   
   
