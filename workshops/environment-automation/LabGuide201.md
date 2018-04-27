@@ -81,7 +81,7 @@ Leveraging this environment, you will configure applications to run in each of t
     
     `  password = "${var.DBAdminPassword}"`
     
-    `  dbconn="jdbc:oracle:thin:@//${module.database.DBNodePublicIP[0]}:1521/${var.PDBName}.${module.vcn.subnet2_label}.${var.env_prefix}${va   r.dns_vcn  }.${var.oraclevcn}"`
+    `  dbconn="jdbc:oracle:thin:@//${module.database.DBNodePublicIP[0]}:1521/${var.PDBName}.${module.vcn.subnet2_label}.${var.env_prefix}${var.dns_vcn}.${var.oraclevcn}"`
       
     `  targets = "${local.jcs_cluster}"`
     
