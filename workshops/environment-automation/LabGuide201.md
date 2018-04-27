@@ -98,11 +98,11 @@ Leveraging this environment, you will configure applications to run in each of t
 
 - **IMPORTANT** - Please make sure the dbconn is in a single line with no line break or space.
 
-- Now you can run this terraform using the below command
+- Now you are ready run this terraform configuration.  First, source the environment.
   
   `. ./env-var.gse`
   
-- To Review the terraform plan to see all the resources terraform will provision in this lab, first initialize the terraform providers and modules needed and then generate the terraform plan and review the resources that terraform will create. In this lab, terraform will create a total of 21 resources. Type the below commands to verify the plan.
+- Run `terraform init` to initialize the terraform providers and modules needed and then run `terraform plan` to generate the execution plan and review the resources that terraform will created. In this lab, terraform will create a total of 4 resources. Type the below commands to verify the plan.
 
   `terraform init`
   
@@ -110,7 +110,7 @@ Leveraging this environment, you will configure applications to run in each of t
   
   ![](images/201/7.png)
   
-- Run the terraform apply to configure the applications on this environment.
+- Run `terraform apply` to configure the applications on this environment.
 
   `terraform apply "plan.out"`
 
