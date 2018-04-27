@@ -124,6 +124,8 @@ Leveraging this environment, you will configure applications to run in each of t
   ![](images/201/10.png)
   
   ![](images/201/11.png)
+  
+- Congratulations ! You have completed the lab.
 
   
 
