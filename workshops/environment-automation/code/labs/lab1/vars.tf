@@ -29,14 +29,8 @@ variable "env_prefix" {
 variable "compute_name" {
   default="DevOps-Instance"
 }
-variable "compute_label" {
-  default="devops-instance"
-}
 variable "instance_shape" {
   default="VM.Standard2.1"
-}
-variable "image_ocid" {
-  default="ocid1.image.oc1.iad.aaaaaaaaafmyat7i5s7ae3aylwtvmt7v4dw4yy2thgzaqlbjzoxngrjg54xq"
 }
 
 
@@ -65,35 +59,20 @@ variable "OTDShape" {
 variable "dns_vcn" {
   default="tfvcn"
 }
-variable "oraclevcn" {
-  default="oraclevcn.com"
-}
 variable "vcn_display" {
   default="DevOpsVCN"
 }
 
 ############################ Object Storage and Swift Password ##############################
 
-variable "swift_password_description" {
-  default="Ojbect Storage password for PaaS"
-}
 variable "bucket_names" {
   default = ["jcs_backup", "jcs_dbcs_backup", "soacs_backup", "soacs_dbcs_backup" ]
 }
 
 ############################## Database Configuration ####################################
 
-variable "DataStorgePercent" {
-  default="40"
-}
 variable "DBNodeShape" {
     default = "VM.Standard1.2"
-}
-variable "CPUCoreCount" {
-    default = "2"
-}
-variable "DBEdition" {
-    default = "ENTERPRISE_EDITION"
 }
 variable "DBAdminPassword" {
     default = "STateinsurance12#_"
@@ -101,44 +80,8 @@ variable "DBAdminPassword" {
 
 # OracleDB SID 
 variable "DBName" {
-    default = "TFdb"
-}
-variable "DBVersion" {
-    default = "12.1.0.2"
-}
-variable "DBDisplayName" {
     default = "TFDB"
-}
-variable "DBDiskRedundancy" {
-    default = "HIGH"
-}
-variable "DBNodeDisplayName" {
-    default = "TFDB"
-}
-variable "DBNodeHostName" {
-    default = "OracleDB"
-}
-variable "HostUserName" {
-    default = "opc"
-}
-variable "NCharacterSet" {
-  default = "AL16UTF16"
-}
-variable "CharacterSet" {
-  default = "AL32UTF8"
-}
-variable "DBWorkload" {
-  default = "OLTP"
 }
 variable "PDBName" {
   default = "pdbName"
-}
-variable "DataStorageSizeInGB" {
-  default = "256"
-}
-variable "LicenseModel" {
-  default = "LICENSE_INCLUDED"
-}
-variable "NodeCount" {
-  default = "1"
 }

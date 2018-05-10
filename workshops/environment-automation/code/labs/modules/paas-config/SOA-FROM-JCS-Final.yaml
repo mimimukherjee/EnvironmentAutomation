@@ -5,25 +5,30 @@
     templateDescription: "Provisions a Stack composed of Java Cloud Service and Database Cloud Service instances using Oracle Storage Cloud Service. **WARNING** You will be billed for the Cloud resources created if you create a Cloud Stack from this template"
     parameters: 
       wlVersion: 
-        label: JCS Version
-        description: "Select a JCS Version"
+        label: SOA Version
+        description: "Select a SOA Version"
         type: String
+        mandatory: true
         default: 12cRelease212
-        allowedValues: {"11gR1": "Oracle WebLogic Server 11g, 11.1.1.7", "12cR3": "Oracle WebLogic Server 12c, 12.1.3.0", "12cRelease212": "Oracle WebLogic Server 12c, 12.2.1.2"}
+        allowedValues: {"12cR3": "Oracle WebLogic Server 12c, 12.1.3.0", "12cRelease212": "Oracle WebLogic Server 12c, 12.2.1.2"}
       wlComputeShape: 
-        label: Compute Shape
+        label: SOA Compute Shape
         description: Select a Compute Shape for this service.
         type: ComputeShape
-        default: {"Fn::If": [isOCI, VM.Standard2.1, oc3]}
+        mandatory: true
+        default: {"Fn::If": [isOCI, VM.Standard1.2, oc1m]}
+        allowedValues: {"Fn::FindInMap": [RegionTypes, {"Fn::GetParam": stackRegionType}, allowedSOAShapes]}
         customize:
-          regionType: {"Fn::If": [emptyRegion, OCICLASSIC, {"Fn::GetParam": stackRegion.regionType}]}
+          regionType: {"Fn::GetParam": stackRegionType}
       wlComputeShape2: 
-        label: Compute Shape
+        label: OTD Compute Shape
         description: Select a Compute Shape for this service.
         type: ComputeShape
         default: {"Fn::If": [isOCI, VM.Standard1.1, oc3]}
+        condition: {"Fn::GetParam": provisionOTD}
+        allowedValues: {"Fn::FindInMap": [RegionTypes, {"Fn::GetParam": stackRegionType}, allowedOTDShapes]}
         customize:
-          regionType: {"Fn::If": [emptyRegion, OCICLASSIC, {"Fn::GetParam": stackRegion.regionType}]}
+          regionType: {"Fn::GetParam": stackRegionType}
       wlByol:
         label: Bring Your Own License
         description: "Check this field if you wish to use your own license. If you choose this please make sure that you have proper entitlements to use for new service instances you are creating."
@@ -43,15 +48,6 @@
         type: ssh
         mandatory: true
         sensitive: true
-      wlAdminUser: 
-        label: Administrator Username
-        description: "Your choice of name for the JCS administration user. Must be between 8 and 128 ASCII characters and cannot contain a tab, brackets, parentheses or the characters , < > & # | ?"
-        type: String
-        minLength: 8
-        maxLength: 128
-        default: weblogic
-        allowedPattern: "[\\p{Print}&&[^',<>#&|\\?\\(\\)\\{\\}\t ]]++"
-        constraintDescription: "JCS administration username must be between 8 and 128 ASCII characters and cannot contain a tab, brackets, parentheses or the characters , < > & # | ?"
       dbSid: 
         label: DB Name (SID)
         description: "Database name of your choice, up to 8 characters; must begin with a letter and can contain only letters and numbers."
@@ -65,6 +61,7 @@
         label: DBCS Version
         description: "Select a DBCS Version"
         type: String
+        mandatory: true
         default: 12.1.0.2
         allowedValues: {"11.2.0.4": "Oracle Database 11g Release 2", "12.1.0.2": "Oracle Database 12c Release 1", "12.2.0.1": "Oracle Database 12c Release 2" }
       dbByol:
@@ -84,6 +81,7 @@
         label: Software Edition
         description: "Select the database edition for this Oracle Database Cloud Service instance."
         type: String
+        mandatory: true
         allowedValues: {"SE": "Standard Edition", "EE": "Enterprise Edition", "EE_HP": "Enterprise Edition - High Performance", "EE_EP": "Enterprise Edition - Extreme Performance" }
         default: SE
       commonPwd:
@@ -102,11 +100,12 @@
         type: String
         default: BOTH
         mandatory: true
-        allowedValues: {"NONE": "None", "BOTH": "Both Remote and Disk Storage" }
+        allowedValues: {"BOTH": "Both Remote and Disk Storage" }
       backupStorageContainer:
-        label: Java Backup Container
+        label: SOA Backup Container
         description: https://foo.storage.oraclecloud.com/MyService-bar/MyContainer. To identify the URL of your storage account, see the <a href="http://www.oracle.com/pls/topic/lookup?ctx=cloud&id=CSSTO-GUID-221133EF-F408-4DCF-9BF7-7A1F12C3E8A6"> documentation</a>.
         type: String
+        mandatory: true
         condition: backupRequired
         default:
           "Fn::If":
@@ -117,6 +116,7 @@
         label: Database Backup Container
         description: https://foo.storage.oraclecloud.com/MyService-bar/MyContainer. To identify the URL of your storage account, see the <a href="http://www.oracle.com/pls/topic/lookup?ctx=cloud&id=CSSTO-GUID-221133EF-F408-4DCF-9BF7-7A1F12C3E8A6"> documentation</a>.
         type: String
+        mandatory: true
         condition: backupRequired
         default:
           "Fn::If":
@@ -127,11 +127,13 @@
         label: Username
         description: Name of an Oracle Storage Cloud Service user that has write access to the specific container. If the container does not exist, then this user must have the Service Administrator role.
         type: String
+        mandatory: true
         condition: backupRequired
       backupStoragePassword:
         label: Password
         description: Password for the Oracle Storage Cloud Service user.
         type: String
+        mandatory: true
         sensitive: true
         condition: backupRequired
       createBackupContainer:
@@ -141,22 +143,24 @@
         default: false
         condition: backupRequired
       dbComputeShape:
-        label: Compute Shape
+        label: DBCS Compute Shape
         description: Select a Compute Shape for this service.
         type: ComputeShape
+        mandatory: true
         default: {"Fn::If": [isOCI, VM.Standard1.1, oc3]}
         customize:
-          regionType: {"Fn::If": [emptyRegion, OCICLASSIC, {"Fn::GetParam": stackRegion.regionType}]}
-      dbStorage: 
+          regionType: {"Fn::GetParam": stackRegionType}
+      dbStorage:
         label: Usable Database Storage (GB)
         description: "Enter the value for usable Database Storage in GB. The number must be between 15 and 1200."
         type: Number
         default: 50
-      stackRegion:
-        label: Region
+      stackRegionType:
+        label: Region Type
         type: String
-        customize:
-          serviceType: JaaS
+        default: OCI
+        mandatory: true
+        allowedValues: {"OCI":"OCI", "OCICLASSIC":"OCICLASSIC"}
       sRegion:
         label: Region
         type: String
@@ -176,17 +180,17 @@
         description: Would you like to Provision OTD?
         type: boolean
         mandatory: false  
-        default: true 
+        default: false 
 
     parameterGroups:
       - label: Database Cloud
         parameters: [ dbByol, dbEntitlement, dbSid, dbVersion, dbComputeShape, dbStorage, dbSoftwareEdition ]
       - label: Access
-        parameters: [ commonPwd, publicKeyText, sRegion, availabilityDomain, subnet ]
+        parameters: [ commonPwd, publicKeyText, stackRegionType, sRegion, availabilityDomain, subnet ]
       - label: Storage Cloud (for Backup)
         parameters: [ backupDestination, backupStorageContainer, dbBackupStorageContainer, backupStorageUser, backupStoragePassword, createBackupContainer ]
-      - label: Java Cloud
-        parameters: [ useIdentityService, wlByol, wlEntitlement, wlVersion, wlComputeShape,wlComputeShape2, wlAdminUser ]
+      - label: SOA Cloud
+        parameters: [ useIdentityService, wlByol, wlEntitlement, wlVersion, wlComputeShape]
     conditions:
        jcsMultEntitl: {"Fn::GreaterThan": [{"Fn::Size" : {"Fn::GetParam" : _account.jaas.entitlementids}}, 1]}
        dbcsMultEntitl: {"Fn::GreaterThan": [{"Fn::Size" : {"Fn::GetParam" : _account.dbaas.entitlementids}}, 1]}
@@ -197,8 +201,20 @@
        emptyRegion: {"Fn::Empty": {"Fn::GetParam": sRegion}}
        emptyAd: {"Fn::Empty": {"Fn::GetParam": availabilityDomain}}
        emptySubnet: {"Fn::Empty": {"Fn::GetParam": subnet}}
-       emptyIpNetwork: {"Fn::Empty": {"Fn::GetParam": stackRegion.ipNetwork}}
-       isOCI: {"Fn::Equals": [OCI, "Fn::GetParam": stackRegion.regionType]}
+       isOCI: {"Fn::Equals": [OCI, "Fn::GetParam": stackRegionType]}
+    mappings:
+       RegionTypes:
+           OCI:
+              "defaultSOAShape": VM.Standard1.2
+              "defaultOTDShape": VM.Standard1.1
+              "allowedSOAShapes": [VM.Standard1.2, VM.Standard1.4,VM.Standard1.8,VM.Standard1.16,BM.Standard1.36]
+              "allowedOTDShapes": [VM.Standard1.1, VM.Standard1.2, VM.Standard1.4,VM.Standard1.8,VM.Standard1.16]
+
+           OCICLASSIC:
+              "defaultSOAShape": oc1m
+              "defaultOTDShape": oc3
+              "allowedSOAShapes": [ oc1m, oc2m, oc3m, oc4m ]
+              "allowedOTDShapes": [ oc3, oc4, oc5, oc6, oc1m, oc2m, oc3m, oc4m ]
     resources:
       backupContainer: 
         type: OSS.Container
@@ -224,12 +240,11 @@
           provisionOTD: {"Fn::GetParam": provisionOTD}
           meteringFrequency: HOURLY
           subnet: { "Fn::If": [emptySubnet, "OPC::NoValue", { "Fn::GetParam": subnet } ]}
-          ipNetwork: { "Fn::If": [emptyIpNetwork, "OPC::NoValue", { "Fn::GetParam": stackRegion.ipNetwork } ]}
           availabilityDomain: { "Fn::If": [emptyAd, "OPC::NoValue", { "Fn::GetParam": availabilityDomain } ]}
           region: { "Fn::If": [emptyRegion, "OPC::NoValue", { "Fn::GetParam": sRegion } ]}
           components:  
              WLS:
-                adminUserName: { "Fn::GetParam": wlAdminUser }
+                adminUserName: weblogic
                 adminPassword: { "Fn::GetParam": commonPwd }
                 dbServiceName: { "Fn::GetAtt": [dbcs, serviceName] }
                 dbaName: sys
@@ -254,7 +269,6 @@
           isBYOL: { "Fn::If": [dbcsBYOL, {"Fn::GetParam": dbByol}, "OPC::NoValue" ]}
           serviceEntitlementId: { "Fn::If": [dbcsMultEntitl, {"Fn::GetParam": dbEntitlement}, "OPC::NoValue" ]}
           subnet: { "Fn::If": [emptySubnet, "OPC::NoValue", { "Fn::GetParam": subnet } ]}
-          ipNetwork: { "Fn::If": [emptyIpNetwork, "OPC::NoValue", { "Fn::GetParam": stackRegion.ipNetwork } ]}
           availabilityDomain: { "Fn::If": [emptyAd, "OPC::NoValue", { "Fn::GetParam": availabilityDomain } ]}
           region: { "Fn::If": [emptyRegion, "OPC::NoValue", { "Fn::GetParam": sRegion } ]}
           parameters: 

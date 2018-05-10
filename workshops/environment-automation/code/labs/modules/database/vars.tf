@@ -5,26 +5,25 @@ variable "availability_domain" {}
 variable "SubnetOCID" {}
 
 # DBSystem specific 
-variable "DataStorgePercent" {}
 variable "DBNodeShape" {}
-variable "CPUCoreCount" {}
-variable "DBEdition" {}
 variable "DBAdminPassword" {}
 variable "DBName" {}
-variable "DBVersion" {}
-variable "DBDisplayName" {}
-variable "DBDiskRedundancy" {}
 variable "DBNodeDisplayName" {}
-variable "DBNodeHostName" {}
 variable "DBNodeDomainName" {}
-
-variable "HostUserName" {}
-variable "NCharacterSet" {}
-variable "CharacterSet" {}
-variable "DBWorkload" {}
 variable "PDBName" {}
-variable "DataStorageSizeInGB" {}
-variable "LicenseModel" {}
-variable "NodeCount" {}
 
 variable "ssh_private_key" {}
+
+variable "DBEdition" {
+    default = "ENTERPRISE_EDITION"
+}
+variable "DBVersion" {
+    default = "12.1.0.2"
+}
+variable "DataStorageSizeInGB" {
+  default = "256"
+}
+variable "NodeCount" {
+  default = "1"
+}
+

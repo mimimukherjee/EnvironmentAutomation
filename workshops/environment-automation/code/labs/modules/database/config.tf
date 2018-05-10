@@ -19,7 +19,7 @@ resource "null_resource" "db-config" {
     inline = [
       "chmod 777 /tmp/db_config.sh",	
       "chmod 666 /tmp/StateInsurance.sql",	
-      "sudo su - oracle -c \"/tmp/db_config.sh ${var.DBNodeHostName} ${var.DBNodeDomainName} ${var.DBName} ${var.PDBName} \""
+      "sudo su - oracle -c \"/tmp/db_config.sh ${var.DBName} ${var.DBNodeDomainName} ${var.PDBName} \""
     ]
   }
 }
