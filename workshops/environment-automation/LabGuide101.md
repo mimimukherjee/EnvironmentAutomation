@@ -110,6 +110,7 @@ ssh -i <private_key_file> <username>@<public_ip>
 - Click on the MENU and navigate to Identity -> Users  
 
 
+
 ![](images/101/13.png)
 
 - Copy the OCID of user gse-admin_ww@oracle.com and enter the user ocid in TF_VAR_user_ocid.
