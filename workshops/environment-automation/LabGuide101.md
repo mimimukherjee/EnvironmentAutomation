@@ -100,11 +100,11 @@ ssh -i <private_key_file> <username>@<public_ip>
 
 ![](images/101/11.png)
 
-- Click on the TENANCY link and copy the tenancy OCID and note down the Home Region.  Enter the tenancy OCID in TF_VAR_tenancy_ocid ,  the tenancy in TF_VAR_tenancy and the Home Region in TF_VAR_region.
+- Click on the MENU and navigate to Governance -> Service Limits and copy the tenancy OCID and note down the Home Region.  Enter the tenancy OCID in TF_VAR_tenancy_ocid,  the tenancy in TF_VAR_tenancy and the Home Region in TF_VAR_region.
 
 ![](images/101/12.png)
   
-- Click on User from the Identity tab  
+- Click the MENU and navigate to Identity -> Users  
 
 ![](images/101/13.png)
 
