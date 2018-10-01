@@ -154,7 +154,7 @@
         label: Usable Database Storage (GB)
         description: "Enter the value for usable Database Storage in GB. The number must be between 15 and 1200."
         type: Number
-        default: 50
+        default: 100
       stackRegionType:
         label: Region Type
         type: String
@@ -207,7 +207,7 @@
            OCI:
               "defaultSOAShape": VM.Standard1.2
               "defaultOTDShape": VM.Standard1.1
-              "allowedSOAShapes": [VM.Standard1.2, VM.Standard1.4,VM.Standard1.8,VM.Standard1.16,BM.Standard1.36]
+              "allowedSOAShapes": [VM.Standard1.1, VM.Standard1.2, VM.Standard1.4,VM.Standard1.8,VM.Standard1.16,VM.Standard2.1,VM.Standard2.2,VM.Standard2.4,VM.Standard2.8,VM.Standard2.16,VM.Standard2.24,BM.Standard1.36,BM.Standard2.52]
               "allowedOTDShapes": [VM.Standard1.1, VM.Standard1.2, VM.Standard1.4,VM.Standard1.8,VM.Standard1.16]
 
            OCICLASSIC:

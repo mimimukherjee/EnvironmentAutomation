@@ -98,7 +98,7 @@ class StackManager():
         files = {
             'name' : "%s" %stack_name,
             'template': "%s" % template_name,
-            'parameterValues' : "{\"publicKeyText\":\""+parameters["publicKeyText"]+"\",\"commonPwd\":\""+parameters["commonPwd"]+"\",\"sRegion\":\""+parameters["sRegion"]+"\",\"availabilityDomain\":\""+parameters["availabilityDomain"]+"\",\"dbBackupStorageContainer\":\""+parameters["dbBackupStorageContainer"]+"\", \"backupStorageUser\":\""+parameters["backupStorageUser"]+"\", \"backupStoragePassword\": \""+parameters["backupStoragePassword"]+"\",\"subnet\":\""+parameters["subnet"]+"\",\"dbComputeShape\":\""+parameters["dbComputeShape"]+"\", \"wlComputeShape\":\""+parameters["wlComputeShape"]+"\"}"
+            'parameterValues' : "{\"publicKeyText\":\""+parameters["publicKeyText"]+"\",\"commonPwd\":\""+parameters["commonPwd"]+"\",\"sRegion\":\""+parameters["sRegion"]+"\",\"availabilityDomain\":\""+parameters["availabilityDomain"]+"\",\"backupStorageContainer\":\""+parameters["backupStorageContainer"]+"\",\"dbBackupStorageContainer\":\""+parameters["dbBackupStorageContainer"]+"\", \"backupStorageUser\":\""+parameters["backupStorageUser"]+"\", \"backupStoragePassword\": \""+parameters["backupStoragePassword"]+"\",\"subnet\":\""+parameters["subnet"]+"\",\"dbComputeShape\":\""+parameters["dbComputeShape"]+"\", \"wlComputeShape\":\""+parameters["wlComputeShape"]+"\"}"
             
             }
         ct = "multipart/form-data"
@@ -157,7 +157,7 @@ class StackManager():
         files = {
             'name' : "%s" %stack_name,
             'template': "%s" % template_name,
-            'parameterValues' : "{\"publicKeyText\":\""+parameters["publicKeyText"]+"\",\"commonPwd\":\""+parameters["commonPwd"]+"\",\"sRegion\":\""+parameters["sRegion"]+"\",\"availabilityDomain\":\""+parameters["availabilityDomain"]+"\",\"backupStorageContainer\":\""+parameters["backupStorageContainer"]+"\",\"dbBackupStorageContainer\":\""+parameters["dbBackupStorageContainer"]+"\", \"backupStorageUser\":\""+parameters["backupStorageUser"]+"\", \"backupStoragePassword\": \""+parameters["backupStoragePassword"]+"\",\"subnet\":\""+parameters["subnet"]+"\",\"dbComputeShape\":\""+parameters["dbComputeShape"]+"\", \"wlComputeShape\":\""+parameters["wlComputeShape"]+"\", \"wlComputeShape2\":\""+parameters["wlComputeShape2"]+"\"}"
+            'parameterValues' : "{\"publicKeyText\":\""+parameters["publicKeyText"]+"\",\"commonPwd\":\""+parameters["commonPwd"]+"\",\"sRegion\":\""+parameters["sRegion"]+"\",\"availabilityDomain\":\""+parameters["availabilityDomain"]+"\",\"backupStorageContainer\":\""+parameters["backupStorageContainer"]+"\",\"dbBackupStorageContainer\":\""+parameters["dbBackupStorageContainer"]+"\", \"backupStorageUser\":\""+parameters["backupStorageUser"]+"\", \"backupStoragePassword\": \""+parameters["backupStoragePassword"]+"\",\"subnet\":\""+parameters["subnet"]+"\",\"dbComputeShape\":\""+parameters["dbComputeShape"]+"\", \"wlComputeShape\":\""+parameters["wlComputeShape"]+"\"}"
         }  
 
         print (files)          

@@ -93,7 +93,7 @@
         label: Backup Destination
         description: Backup Destination can be None, or Both Remote and Disk Storage
         type: String
-        default: NONE
+        default: BOTH
         mandatory: true
         allowedValues: {"NONE": "None", "BOTH": "Both Remote and Disk Storage" }
       backupStorageContainer:
