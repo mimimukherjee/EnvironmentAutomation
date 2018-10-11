@@ -62,6 +62,7 @@ module "paas" {
   region = "${var.region}"
   tenancy_ocid = "${var.tenancy_ocid}"
   ssh_public_key_path = "${var.ssh_public_key_path}"
+  ssh_public_key = "${var.ssh_public_key}"
   object_storage_user = "${var.object_storage_user}"
   swift_password = "${var.swift_password}"
   OTDShape = "${var.OTDShape}"

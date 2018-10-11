@@ -2,6 +2,7 @@ variable "tenancy_ocid" {}
 variable "buckets" {
   type = "list"
 }
+variable "ssh_public_key" {}
 variable "ssh_public_key_path" {}
 variable "swift_password" {}
 variable "region" {}

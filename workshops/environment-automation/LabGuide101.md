@@ -152,7 +152,17 @@ $ terraform plan -out plan.out
   
   ![](images/101/23.png)
   
-  ![](images/101/24.png)
+  ![](images/101/24a.png)
+  
+  ![](images/101/24b.png)
+  
+  ![](images/101/24c.png)
+  
+  ![](images/101/24d.png)
+  
+  ![](images/101/24e.png)
+  
+  ![](images/101/24f.png)
   
   ![](images/101/25.png)
   
