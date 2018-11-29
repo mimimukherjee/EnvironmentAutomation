@@ -72,10 +72,10 @@ Leveraging this environment, you will configure applications to run in each of t
       source = "../modules/app-config"
       wlst = "/app/fmw/oracle_common/common/bin/wlst.sh"
       liberty_ip = "${module.compute.public-ip}"
-      osb_ip = "${trimspace(module.get-paas-info.soa_public_ip)}"
-      jcs_ip = "${trimspace(module.get-paas-info.jcs_public_ip)}"
+      osb_ip = "${trimspace(module.paas.soa_public_ip)}"
+      jcs_ip = "${trimspace(module.paas.jcs_public_ip)}"
       password = "${var.DBAdminPassword}"
-      dbconn="jdbc:oracle:thin:@//${module.database.DBNodePublicIP[0]}:1521/${var.PDBName}.${module.vcn.subnet2_label}.${var.env_prefix}${var.dns_vcn}.oraclevcn.com"
+      dbconn="jdbc:oracle:thin:@//${module.database.DBNodePublicIP[0]}:1521/${var.PDBName}.${module.vcn.subnet3_label}.${var.env_prefix}${var.dns_vcn}.oraclevcn.com"
       targets = "${local.jcs_cluster}"
       ssh_private_key = "${var.ssh_authorized_private_key}"
   }
