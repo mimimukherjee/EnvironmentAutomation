@@ -35,7 +35,8 @@ resource "null_resource" "stack-manager-soa" {
 
   provisioner "local-exec" {
     when = "destroy"
-    command = "python ${path.module}/stackmanager.py delete soa -u ${var.user} -p ${var.password} --debug -dn ${var.domain} -pa ${path.module} -e ${var.env_prefix}"
+    #command = "python ${path.module}/stackmanager.py delete soa -u ${var.user} -p ${var.password} --debug -dn ${var.domain} -pa ${path.module} -e ${var.env_prefix}"
+    command = "${path.module}/stack_delete.sh ${var.user} ${var.password} ${var.domain} ${var.db_password} ${var.env_prefix}"
   }
 }
 
@@ -74,6 +75,10 @@ resource "oraclepaas_database_service_instance" "JCSDBCSStackDBCS" {
     cloud_storage_container = "https://swiftobjectstorage.${var.region}.oraclecloud.com/v1/${var.tenancy}/${var.buckets[1]}"
     cloud_storage_username  = "${var.object_storage_user}"
     cloud_storage_password  = "${var.swift_password}"
+  }
+
+  timeouts {
+    "create" = "150m"
   }
 }
 
@@ -130,6 +135,10 @@ resource "oraclepaas_java_service_instance" "JCSDBCSStackJCS" {
     cloud_storage_container = "https://swiftobjectstorage.${var.region}.oraclecloud.com/v1/${var.tenancy}/${var.buckets[0]}"
     cloud_storage_username  = "${var.object_storage_user}"
     cloud_storage_password  = "${var.swift_password}"
+  }
+
+  timeouts {
+    "create" = "150m"
   }
 }
 

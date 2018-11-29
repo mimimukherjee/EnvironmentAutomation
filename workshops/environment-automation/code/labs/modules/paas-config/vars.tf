@@ -29,3 +29,7 @@ variable "env_prefix" {
   default = ""
 }
 
+variable "paas_compartment_id" {}
+variable "jcs_display_name" {}
+variable "soa_display_name" {}
+

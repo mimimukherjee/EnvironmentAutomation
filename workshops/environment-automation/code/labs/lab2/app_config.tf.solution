@@ -1,12 +1,4 @@
 
-
-module "get-paas-info" {
-  source = "../modules/get-paas-info"
-  paas_compartment_id = "${var.paas_compartment_ocid}"
-  jcs_display_name = "${var.subscription_id}|JaaS|${var.env_prefix}JCSDBCSStackJCS|wls|vm-1"
-  soa_display_name = "${var.subscription_id}|SOA|${var.env_prefix}SOAStackSOACS|wls|vm-1"
-}
-
 locals {
   jcsname =  "${var.env_prefix}JCSDBCSStackJCS"
   jcs_cluster = "${substr(local.jcsname, 0, 8)}_cluster"
@@ -17,10 +9,10 @@ module "app-config" {
   source = "../modules/app-config"
   wlst = "/app/fmw/oracle_common/common/bin/wlst.sh"
   liberty_ip = "${module.compute.public-ip}"
-  osb_ip = "${trimspace(module.get-paas-info.soa_public_ip)}"
-  jcs_ip = "${trimspace(module.get-paas-info.jcs_public_ip)}"
+  osb_ip = "${trimspace(module.paas.soa_public_ip)}"
+  jcs_ip = "${trimspace(module.paas.jcs_public_ip)}"
   password = "${var.DBAdminPassword}"
-  dbconn = "jdbc:oracle:thin:@//${module.database.DBNodePublicIP[0]}:1521/${var.PDBName}.${module.vcn.subnet2_label}.${var.env_prefix}${var.dns_vcn}.oraclevcn.com"
+  dbconn = "jdbc:oracle:thin:@//${module.database.DBNodePublicIP[0]}:1521/${var.PDBName}.${module.vcn.subnet3_label}.${var.env_prefix}${var.dns_vcn}.oraclevcn.com"
   targets = "${local.jcs_cluster}"
   ssh_private_key = "${var.ssh_authorized_private_key}"
 }
@@ -32,5 +24,5 @@ output "LibertyInsurance App Url" {
 }
 
 output "StateGov App Url" {
-  value = "http://${trimspace(module.get-paas-info.jcs_public_ip)}/StateGov-WebService-context-root/"
+  value = "http://${trimspace(module.paas.jcs_public_ip)}/StateGov-WebService-context-root/"
 }

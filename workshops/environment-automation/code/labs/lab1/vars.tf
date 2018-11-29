@@ -46,9 +46,11 @@ variable "JCSShape" {
 }
 variable "SOAShape" {
   default="VM.Standard1.2"
+  #default="VM.Standard2.2"
 }
 variable "SOADBShape" {
-  default="VM.Standard2.1"
+  #default="VM.Standard2.1"
+  default="VM.Standard1.2"
 }
 variable "OTDShape" {
   default="VM.Standard1.1"
@@ -72,7 +74,8 @@ variable "bucket_names" {
 ############################## Database Configuration ####################################
 
 variable "DBNodeShape" {
-    default = "VM.Standard1.2"
+    #default = "VM.Standard1.2"
+    default = "VM.Standard2.2"
 }
 variable "DBAdminPassword" {
     default = "STateinsurance12#_"

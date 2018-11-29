@@ -20,4 +20,9 @@ resource "oci_database_db_system" "TFDBNode" {
   node_count = "${var.NodeCount}"
   #optional
   display_name = "${var.DBNodeDisplayName}"
+
+  timeouts = {
+    "create" = "150m"
+  }
+
 }

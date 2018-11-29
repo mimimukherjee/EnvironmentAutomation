@@ -21,19 +21,19 @@ module "compute" {
   ssh_public_key = "${var.ssh_public_key}"
   ssh_private_key = "${var.ssh_authorized_private_key}"
   instance_shape = "${var.instance_shape}"
-  subnet = "${module.vcn.subnet2_ocid}"
+  subnet = "${module.vcn.subnet3_ocid}"
   name = "${var.env_prefix}${var.compute_name}"
-  availability_domain = "${module.vcn.subnet2_ad}"
+  availability_domain = "${module.vcn.subnet3_ad}"
 }
 
 module "database" {
   source = "../modules/database"
   tenancy_ocid = "${var.tenancy_ocid}"
   compartment_ocid = "${var.compartment_ocid}"
-  availability_domain = "${module.vcn.subnet2_ad}"
-  SubnetOCID = "${module.vcn.subnet2_ocid}"
+  availability_domain = "${module.vcn.subnet3_ad}"
+  SubnetOCID = "${module.vcn.subnet3_ocid}"
   ssh_public_key = "${var.ssh_public_key}"
-  DBNodeDomainName = "${module.vcn.subnet2_label}.${var.env_prefix}${var.dns_vcn}.oraclevcn.com"
+  DBNodeDomainName = "${module.vcn.subnet3_label}.${var.env_prefix}${var.dns_vcn}.oraclevcn.com"
   DBNodeShape = "${var.DBNodeShape}"
   DBAdminPassword = "${var.DBAdminPassword}"
   DBName = "${var.DBName}"
@@ -57,8 +57,8 @@ module "paas" {
   db_password = "${var.DBAdminPassword}"
   password = "${var.password}"
   domain = "${var.domain}"
-  jcs_subnet = "${module.vcn.subnet3_ocid}"
-  soacs_subnet = "${module.vcn.subnet3_ocid}"
+  jcs_subnet = "${module.vcn.subnet1_ocid}"
+  soacs_subnet = "${module.vcn.subnet2_ocid}"
   region = "${var.region}"
   tenancy_ocid = "${var.tenancy_ocid}"
   ssh_public_key_path = "${var.ssh_public_key_path}"
@@ -72,9 +72,12 @@ module "paas" {
   DBShape = "${var.DBShape}"
   tenancy = "${var.tenancy}"
   buckets = "${module.object_storage.names}"
-  jcs_ad = "${module.vcn.subnet3_ad}"
-  soacs_ad = "${module.vcn.subnet3_ad}"
+  jcs_ad = "${module.vcn.subnet1_ad}"
+  soacs_ad = "${module.vcn.subnet2_ad}"
   env_prefix = "${var.env_prefix}"
+  paas_compartment_id = "${var.paas_compartment_ocid}"
+  jcs_display_name = "${var.subscription_id}|JaaS|${var.env_prefix}JCSDBCSStackJCS|wls|vm-1"
+  soa_display_name = "${var.subscription_id}|SOA|${var.env_prefix}SOAStackSOACS|wls|vm-1"
 }
 
 
@@ -86,3 +89,12 @@ output "Compute Public IP" {
 output "DB Public IP" {
   value = "${module.database.DBNodePublicIP}"
 }			
+
+output "jcs_ip" {
+  value = "${module.paas.jcs_public_ip}"
+}
+
+output "soa_ip" {
+  value = "${module.paas.soa_public_ip}"
+}
+
