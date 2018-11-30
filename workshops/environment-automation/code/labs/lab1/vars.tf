@@ -75,7 +75,7 @@ variable "bucket_names" {
 
 variable "DBNodeShape" {
     #default = "VM.Standard1.2"
-    default = "VM.Standard2.2"
+    default = "VM.Standard2.1"
 }
 variable "DBAdminPassword" {
     default = "STateinsurance12#_"
