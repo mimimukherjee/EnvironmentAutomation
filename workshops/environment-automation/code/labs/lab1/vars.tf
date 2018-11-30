@@ -30,7 +30,7 @@ variable "compute_name" {
   default="DevOps-Instance"
 }
 variable "instance_shape" {
-  default="VM.Standard2.1"
+  default="VM.Standard2.2"
 }
 
 
@@ -42,14 +42,12 @@ variable "DBShape" {
   default="VM.Standard1.2"
 }
 variable "JCSShape" {
-  default="VM.Standard2.1"
+  default="VM.Standard1.4"
 }
 variable "SOAShape" {
-  default="VM.Standard1.2"
-  #default="VM.Standard2.2"
+  default="VM.Standard1.4"
 }
 variable "SOADBShape" {
-  #default="VM.Standard2.1"
   default="VM.Standard1.2"
 }
 variable "OTDShape" {
@@ -74,7 +72,6 @@ variable "bucket_names" {
 ############################## Database Configuration ####################################
 
 variable "DBNodeShape" {
-    #default = "VM.Standard1.2"
     default = "VM.Standard2.1"
 }
 variable "DBAdminPassword" {

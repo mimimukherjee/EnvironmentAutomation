@@ -39,14 +39,12 @@ variable "config_src_dir" {
 }
 
 variable "DBShape" {
-  #default="VM.Standard1.2"
   default="VM.Standard2.1"
 }
 variable "JCSShape" {
   default="VM.Standard2.2"
 }
 variable "SOAShape" {
-  #default="VM.Standard1.2"
   default="VM.Standard2.2"
 }
 variable "SOADBShape" {
@@ -75,7 +73,6 @@ variable "bucket_names" {
 ############################## Database Configuration ####################################
 
 variable "DBNodeShape" {
-    #default = "VM.Standard1.2"
     default = "VM.Standard2.1"
 }
 variable "DBAdminPassword" {
