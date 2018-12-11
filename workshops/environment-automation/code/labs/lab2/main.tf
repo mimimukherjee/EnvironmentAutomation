@@ -42,15 +42,6 @@ module "database" {
   ssh_private_key = "${var.ssh_authorized_private_key}"
 }
 
-module "docker-config" {
-  source = "../modules/docker-config"
-  tenancy_ocid = "${var.tenancy_ocid}"
-  compartment_ocid = "${var.compartment_ocid}"
-  public-ip = "${module.compute.public-ip}"
-  ssh_private_key = "${var.ssh_authorized_private_key}"
-  config_src_dir = "${var.config_src_dir}"
-}
-
 module "paas" {
   source = "../modules/paas-config"
   user = "${var.user}"

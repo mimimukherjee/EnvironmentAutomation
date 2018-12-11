@@ -49,7 +49,6 @@ variable "SOAShape" {
 }
 variable "SOADBShape" {
   default="VM.Standard2.1"
-  #default="VM.Standard1.2"
 }
 variable "OTDShape" {
   default="VM.Standard1.1"

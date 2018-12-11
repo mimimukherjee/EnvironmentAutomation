@@ -44,7 +44,7 @@ cd('/JDBCSystemResources/StateInsuranceDS/JDBCResource/StateInsuranceDS/JDBCData
 cmo.setGlobalTransactionsProtocol('OnePhaseCommit')
 
 cd('/JDBCSystemResources/StateInsuranceDS')
-set('Targets',jarray.array([ObjectName('com.bea:Name=' + 'WL_AdminServer' + ',Type=' + 'Server')], ObjectName))
+set('Targets',jarray.array([ObjectName('com.bea:Name=' + 'AdminServer' + ',Type=' + 'Server')], ObjectName))
 
 save()
 activate()
